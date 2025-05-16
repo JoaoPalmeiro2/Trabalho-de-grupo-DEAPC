@@ -1,1 +1,1 @@
-# Trabalho-de-grupo-pico
+# Trabalho-de-grupo
