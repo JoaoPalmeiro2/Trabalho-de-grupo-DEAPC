@@ -1,0 +1,17 @@
+SIT
+
+“SIT. Onde sentas o juízo e arrancas sem rumo.”
+
+Modelos:
+| Modelo SEAT Original | Nome Paródico SIT | Notas de humor                                             |
+| -------------------- | ----------------- | ---------------------------------------------------------- |
+| Ibiza                | **Pizza**         | Pequeno, rápido, e sempre a dar fome                       |
+| León                 | **Leão**          | Parece feroz, mas mia ao subir uma ladeira                 |
+| Arona                | **Aronha**        | Ideal para quem adora subidas, mesmo que lentas            |
+| Ateca                | **Aseca**         | SUV com zero emoção — seco como o nome                     |
+| Tarraco              | **Carraço**       | O “gigante” da marca, mas faz barulhos estranhos ao virar  |
+| Alhambra             | **Almôndega**     | Grande, redondo e difícil de estacionar                    |
+| Toledo               | **Trolhado**      | Tenta ser elegante, mas ninguém leva a sério               |
+| Mii                  | **Ni**            | Tão pequeno que às vezes desaparece nos buracos da estrada |
+
+
