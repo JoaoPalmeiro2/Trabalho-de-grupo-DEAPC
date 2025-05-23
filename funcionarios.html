@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <title>Área Funcionários - Inventário, Encomendas e Usuários</title>
+  <link rel="stylesheet" href="styles/style.css" />
+</head>
+<body>
+  <header>
+    <h1>Área Restrita Funcionários</h1>
+    <button class="logout" onclick="logout()">Sair</button>
+  </header>
+
+  <section id="inventarioSection">
+    <h2>Alterar Inventário</h2>
+    <form id="inventarioForm" onsubmit="return adicionarCarro(event)">
+      <label for="modelo">Modelo:</label>
+      <input type="text" id="modelo" required />
+
+      <label for="descricao">Descrição:</label>
+      <textarea id="descricao" rows="3" required></textarea>
+
+      <label for="ano">Ano:</label>
+      <input type="number" id="ano" min="2000" max="2030" required />
+
+      <label for="preco">Preço (€):</label>
+      <input type="number" id="preco" min="0" step="0.01" required />
+
+      <button type="submit">Adicionar ao Inventário</button>
+    </form>
+
+    <div id="inventarioLista"></div>
+  </section>
+
+  <section id="encomendasSection">
+    <h2>Aceitar Encomendas</h2>
+    <form id="encomendasForm" onsubmit="return aceitarEncomenda

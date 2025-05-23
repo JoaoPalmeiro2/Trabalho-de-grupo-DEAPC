@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Consulta de Encomendas - SIT</title>
+    <link rel="stylesheet" href="styles/style.css" />
+  </head>
+  <body>
+    <header>
+      <a href="index.html">
+        <img src="imagens/logo.png" alt="Logo SIT" class="logo" />
+      </a>
+      <h1>Consulta de Encomendas</h1>
+    </header>
+    <main>
+      <form id="consultaForm">
+        <label for="numEncomenda">Número da Encomenda:</label>
+        <input type="text" id="numEncomenda" required />
+        <button type="submit">Consultar</button>
+      </form>
+
+      <div id="resultadoConsulta" style="margin-top: 20px"></div>
+    </main>
+
+    <script>
+      const encomendas = [
+        {
+          num: "1001",
+          modelos: "Ibiza, Leon",
+          ano: "2024",
+          dataEntrega: "2025-06-01",
+          valor: 41000,
+        },
+        {
+          num: "1002",
+          modelos: "Arona",
+          ano: "2023",
+          dataEntrega: "2025-05-20",
+          valor: 25000,
+        },
+      ];
+
+      document
+        .getElementById("consultaForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          const num = document.getElementById("numEncomenda").value.trim();
+          const resultado = document.getElementById("resultadoConsulta");
+          const encomenda = encomendas.find((e) => e.num === num);
+
+          if (encomenda) {
+            resultado.innerHTML = `
+          <h3>Detalhes da Encomenda #${encomenda.num}</h3>
+          <p><strong>Modelos:</strong> ${encomenda.modelos}</p>
+          <p><strong>Ano:</strong> ${encomenda.ano}</p>
+          <p><strong>Data de Entrega:</strong> ${encomenda.dataEntrega}</p>
+          <p><strong>Valor:</strong> €${encomenda.valor}</p>
+        `;
+          } else {
+            resultado.innerHTML =
+              '<p style="color:red;">Número de encomenda inválido.</p>';
+          }
+        });
+    </script>
+  </body>
+</html>
