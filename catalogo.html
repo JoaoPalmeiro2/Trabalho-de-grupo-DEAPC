@@ -5,36 +5,36 @@
     <title>Catálogo de Carros - SIT</title>
     <link rel="stylesheet" href="styles/style.css" />
     <style>
-        /* Estilo básico para o modal (pode ajustar no seu style.css se preferir) */
+        
         .modal {
-            display: none; /* Oculto por padrão */
-            position: fixed; /* Posição fixa na tela */
-            z-index: 1; /* Fica por cima de outros elementos */
+            display: none; 
+            position: fixed; 
+            z-index: 1; 
             left: 0;
             top: 0;
-            width: 100%; /* Largura total */
-            height: 100%; /* Altura total */
-            overflow: auto; /* Permite scroll se o conteúdo for maior que a tela */
-            background-color: rgba(0,0,0,0.4); /* Fundo semi-transparente preto */
-            padding-top: 60px; /* Espaço do topo para o modal */
+            width: 100%; 
+            height: 100%; 
+            overflow: auto; 
+            background-color: rgba(0,0,0,0.4); 
+            padding-top: 60px; 
         }
 
         .modal-content {
             background-color: #fefefe;
-            margin: 5% auto; /* 5% do topo e centralizado horizontalmente */
+            margin: 5% auto; 
             padding: 20px;
             border: 1px solid #888;
-            width: 80%; /* Largura do conteúdo do modal */
-            max-width: 500px; /* Largura máxima para telas maiores */
+            width: 80%; 
+            max-width: 500px; 
             box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
             animation-name: animatetop;
             animation-duration: 0.4s
         }
 
-        /* Animação para o modal aparecer */
+        
         @keyframes animatetop {
             from {top: -300px; opacity: 0}
-            to {top: 5%; opacity: 1} /* Ajustado para corresponder ao margin-top do modal-content */
+            to {top: 5%; opacity: 1} 
         }
 
         .close-button {
@@ -54,8 +54,8 @@
         .modal-content form {
             display: flex;
             flex-direction: column;
-            gap: 15px; /* Espaço entre os elementos do formulário */
-            align-items: center; /* Centraliza os itens do formulário */
+            gap: 15px; 
+            align-items: center; 
         }
 
         .modal-content label {
@@ -68,12 +68,12 @@
             padding: 10px;
             border: 1px solid #ccc;
             border-radius: 5px;
-            width: 80%; /* Larga para inputs */
+            width: 80%; 
             max-width: 300px;
         }
 
         .modal-content button[type="submit"] {
-            background-color: #4CAF50; /* Cor verde para o botão */
+            background-color: #4CAF50; 
             color: white;
             cursor: pointer;
             font-size: 16px;
@@ -163,26 +163,26 @@
     </div>
 
     <script>
-        // Obtém o elemento do modal
+        
         var modal = document.getElementById("testDriveModal");
-        // Obtém o elemento para exibir o nome do carro no modal
+       
         var carModelNameSpan = document.getElementById("carModelName");
-        // Obtém o input oculto onde será armazenado o nome do carro
+        
         var carModelInput = document.getElementById("car_model_input");
 
-        // Função para abrir o modal e definir o nome do carro
+        
         function openTestDriveModal(carModel) {
-            carModelNameSpan.textContent = carModel; // Exibe o nome do carro no título do modal
-            carModelInput.value = carModel; // Define o valor do input oculto
-            modal.style.display = "block"; // Torna o modal visível
+            carModelNameSpan.textContent = carModel; 
+            carModelInput.value = carModel; 
+            modal.style.display = "block"; 
         }
 
-        // Função para fechar o modal
+        
         function closeTestDriveModal() {
-            modal.style.display = "none"; // Oculta o modal
+            modal.style.display = "none"; 
         }
 
-        // Fecha o modal se o utilizador clicar fora do conteúdo do modal
+       
         window.onclick = function(event) {
             if (event.target == modal) {
                 modal.style.display = "none";
