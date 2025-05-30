@@ -1,0 +1,13 @@
+Stories					INFO armazenada e processada no servidor		
+							
+Código	Nome	Descrição	Prioridade		Código	Nome	Descrição
+CLI01	Aceder à lista de produtos	Como Cliente quero aceder à lista dos carros disponíveis para saber quais os carros à venda.	Alta		CLI01	//	Sem info guardada nas bases de dados
+CLI02	Ver detalhes do carro	Como Cliente quero ver os detalhes de cada carros, incluindo preço, ano e características, para tomar uma decisão de compra informada.	Alta		CLI02	detalhescarros.php	Recebe o ID do carro, consulta a base de dados e retorna o preço, ano, características técnicas, equipamentos e imagens associadas
+CLI03	Marcar um test drive	Como Cliente quero marcar um test drive e receber um ticket com a data, hora e local.	Média		CLI03	marcartestdrive.php	Recebe os dados do formulário (nome, contacto, data, carro) e cria um novo pedido de test drive na base de dados.
+CLI04	Simular um financiamento	Como cliente quero simular o valor das prestações mensais com base no valor de entrada, número de meses e taxa de juro.	Alta		CLI04	financiamento.php	Recebe os dados da simulação (valor do carro, entrada, meses, taxa) e calcula o valor da prestação mensal.
+							
+Código	Nome	Descrição	Prioridade		Código	Nome	Descrição
+FUN01	Inserir novos carros	Como Vendedor quero adicionar novos carros ao catálogo para atualizar a oferta.	Alta		FUN01	admin_addcarro.php	Recebe os dados do carro via formulário (ex.: marca, modelo, ano, preço, características técnicas, imagens) e valida as informações antes de as armazenar na base de dados.
+FUN02	Atualizar preços	Como Vendedor quero atualizar os preços dos carros conforme o mercado ou promoções.	Alta		FUN02	atualizar_preco.php	Recebe o ID do veículo e o novo preço
+FUN03	Gerir estoque	Como Vendedor quero gerir o stock de carros para garantir que a quantidade disponível esteja sempre atualizada.	Média		FUN03	gerir_stock.php	Recebe o ID do veículo e a nova quantidade (ou um ajuste como "+3" ou "-1"), valida os dados e atualiza o valor na base de dados.
+FUN04	Iniciar sessão	Como Vendedor quero iniciar sessão para aceder á área restrita dos funcionários.	Alta		FUN04	login.php	Processa o início de sessão dos vendedores recebendo o email e palavra-passe que são validados e comparados com os dados armazenados

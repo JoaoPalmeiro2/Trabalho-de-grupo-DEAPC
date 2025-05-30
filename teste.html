@@ -1,0 +1,32 @@
+<?php
+$db = new SQLite3('database.db');
+
+// Busca todas as viaturas
+$resultado = $db->query("SELECT * FROM viaturas ORDER BY preco DESC");
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Viaturas à Venda</title>
+</head>
+<body>
+    <h1>Viaturas Disponíveis</h1>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Preço</th>
+            <th>Descrição</th>
+        </tr>
+        <?php while ($row = $resultado->fetchArray(SQLITE3_ASSOC)): ?>
+        <tr>
+            <td><?= $row['id'] ?></td>
+            <td><?= htmlspecialchars($row['nome']) ?></td>
+            <td>€<?= number_format($row['preco'], 2) ?></td>
+            <td><?= htmlspecialchars($row['descricao']) ?></td>
+        </tr>
+        <?php endwhile; ?>
+    </table>
+</body>
+</html>
