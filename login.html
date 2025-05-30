@@ -8,25 +8,12 @@
   <body>
     <div class="login-container">
       <h2>Login</h2>
-      <div class="error" id="errorMsg">Usuário ou senha inválidos</div>
-      <input type="text" id="username" placeholder="Usuário" />
-      <input type="password" id="password" placeholder="Senha" />
-      <button onclick="login()">Entrar</button>
+
+      <form method="POST" action="login.php">
+        <input type="text" name="username" placeholder="Usuário" required />
+        <input type="password" name="password" placeholder="Senha" required />
+        <button type="submit">Entrar</button>
+      </form>
     </div>
-
-    <script>
-      function login() {
-        const username = document.getElementById("username").value.trim();
-        const password = document.getElementById("password").value.trim();
-        const errorMsg = document.getElementById("errorMsg");
-
-        if (username === "zaza" && password === "1234") {
-          localStorage.setItem("funcionarioLogado", username);
-          window.location.href = "funcionarios.html";
-        } else {
-          errorMsg.style.display = "block";
-        }
-      }
-    </script>
   </body>
 </html>
