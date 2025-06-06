@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     $sql = "SELECT tipo, data_test_drive FROM processo WHERE id = ?";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("i", $id); // i = integer
+    $stmt->bind_param("i", $id); 
     $stmt->execute();
     $result = $stmt->get_result();
 

@@ -1,13 +1,12 @@
 <?php
 session_start();
 
-// Verifica se o formulário foi enviado
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Ligação à base de dados
+    
     $host = 'localhost';
-    $db = 'deapc';      // substitui pelo nome da tua base de dados
-    $user = 'root';     // ou outro utilizador MySQL
-    $pass = '';         // palavra-passe (em localhost, normalmente está vazia)
+    $db = 'deapc';      
+    $user = 'root';    
+    $pass = '';         
 
     $conn = new mysqli($host, $user, $pass, $db);
 

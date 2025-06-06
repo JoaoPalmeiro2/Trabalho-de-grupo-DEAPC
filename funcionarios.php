@@ -1,27 +1,27 @@
 <?php
 session_start();
 
-// Dados da ligação à base de dados
-$servername = "localhost";    // normalmente é localhost
-$username_db = "root";         // substitui pelo teu user MySQL
-$password_db = "";             // substitui pela tua password MySQL
-$dbname = "deapc";             // nome da tua base de dados
 
-// Criar ligação
+$servername = "localhost";    
+$username_db = "root";         
+$password_db = "";             
+$dbname = "deapc";             
+
+
 $conn = new mysqli($servername, $username_db, $password_db, $dbname);
 
-// Verificar ligação
+
 if ($conn->connect_error) {
     die("Ligação falhou: " . $conn->connect_error);
 }
 
-// Verificar se o utilizador está autenticado
+
 if (!isset($_SESSION['username'])) {
     echo "Utilizador não autenticado.";
     exit;
 }
 
-// Registar o acesso do utilizador
+
 $username = $_SESSION['username'];
 $data_acesso = date('Y-m-d H:i:s');
 $stmt = $conn->prepare("INSERT INTO acessos (username, data_acesso) VALUES (?, ?)");
@@ -29,7 +29,7 @@ $stmt->bind_param("ss", $username, $data_acesso);
 $stmt->execute();
 $stmt->close();
 
-// Atualizar stock se o formulário for enviado
+
 if (isset($_POST['id']) && isset($_POST['novo_stock'])) {
     $id = intval($_POST['id']);
     $novo_stock = intval($_POST['novo_stock']);
@@ -42,10 +42,8 @@ if (isset($_POST['id']) && isset($_POST['novo_stock'])) {
     $msg_atualizacao = "Stock atualizado com sucesso.";
 }
 
-// Buscar dados atuais do inventário
 $result = $conn->query("SELECT * FROM inventario");
 
-// Buscar todos os test drives marcados
 $sql_test_drives = "SELECT id, tipo, data_test_drive FROM processo ORDER BY data_test_drive DESC";
 $result_test_drives = $conn->query($sql_test_drives);
 ?>
@@ -105,7 +103,6 @@ $result_test_drives = $conn->query($sql_test_drives);
     font-weight: bold;
   }
 
-  /* Estilo para botão logout */
   .logout {
     padding: 6px 12px;
     background-color: #d9534f;

@@ -14,13 +14,13 @@
     </header>
 
     <?php
-    // Inicializar variáveis para evitar warnings
+   
     $valorCarro = $entrada = $meses = null;
     $erro = "";
     $resultado = "";
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        // Receber e validar os dados do formulário
+       
         $valorCarro = filter_input(INPUT_POST, 'valorCarro', FILTER_VALIDATE_FLOAT);
         $entrada = filter_input(INPUT_POST, 'entrada', FILTER_VALIDATE_FLOAT);
         $meses = filter_input(INPUT_POST, 'meses', FILTER_VALIDATE_INT);
@@ -36,12 +36,12 @@
         }
 
         if (empty($erro)) {
-            // Cálculo do financiamento
+           
             $valorFinanciado = $valorCarro - $entrada;
-            $taxaAnual = 0.05;  // 5% taxa de juro anual
+            $taxaAnual = 0.05;  
             $taxaMensal = $taxaAnual / 12;
 
-            // Fórmula da prestação mensal (amortização com juros compostos)
+            
             $prestacao = ($taxaMensal * $valorFinanciado) / (1 - pow(1 + $taxaMensal, -$meses));
 
             $resultado = "

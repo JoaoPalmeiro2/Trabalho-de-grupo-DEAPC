@@ -12,7 +12,7 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 $resultado = "";
 $erro = "";
 
-// Se o formulário foi submetido
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $test_drive_date = $_POST['test_drive_date']; 
     $car_model = $_POST['car_model'];             
