@@ -6,25 +6,23 @@ error_reporting(E_ALL);
 
 $erro = '';
 
-// Apenas processar se o formulário foi enviado
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $host = 'localhost';
     $db = 'deapc';      
     $user = 'root';    
     $pass = '';         
 
-    // Criar conexão
+    
     $conn = new mysqli($host, $user, $pass, $db);
 
     if ($conn->connect_error) {
         die("Erro na ligação: " . $conn->connect_error);
     }
 
-    // Receber e limpar os inputs
     $username = trim($_POST['username'] ?? '');
     $password = trim($_POST['password'] ?? '');
 
-    // Preparar e executar a query
     $stmt = $conn->prepare("SELECT * FROM contas WHERE username = ?");
     $stmt->bind_param("s", $username);
     $stmt->execute();
@@ -33,8 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($result && $result->num_rows === 1) {
         $user = $result->fetch_assoc();
 
-        // Aqui: compara a password. 
-        // **ATENÇÃO**: se guardares passwords com hash, usa password_verify()
+        
         if ($password === $user['password']) {
             $_SESSION['username'] = $username;
             header("Location: funcionarios.php");

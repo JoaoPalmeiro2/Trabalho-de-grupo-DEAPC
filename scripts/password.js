@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (password.length < 4) {
             alert("A palavra-passe deve ter pelo menos 4 caracteres.");
-            e.preventDefault();  // Corrigido: removido o "/" sobrando
+            e.preventDefault();  
         }
     });
 });
