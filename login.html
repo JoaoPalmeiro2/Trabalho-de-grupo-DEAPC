@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Login</title>
+    <link rel="stylesheet" href="styles/style.css" />
+    <script src="password.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <a href="index.html">
+        <img src="imagens/logo.png" alt="Logo SIT" class="logo" />
+      </a>
+      <h1>Login SIT</h1>
+    </header>
+
+    <div class="login-container">
+      <h2>Login</h2>
+      <form id="loginForm" method="POST">
+        <input
+          type="text"
+          id="username"
+          name="username"
+          placeholder="Usuário"
+          required
+        />
+        <input
+          type="password"
+          id="password"
+          name="password"
+          placeholder="Senha"
+          required
+        />
+        <button type="submit">Entrar</button>
+      </form>
+      <p id="erro" style="color: red"></p>
+    </div>
+  </body>
+</html>
