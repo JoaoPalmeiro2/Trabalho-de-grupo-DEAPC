@@ -3,12 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const togglePassword = document.getElementById("togglePassword");
     const form = document.getElementById("loginForm");
 
-    togglePassword.addEventListener("click", () => {
-        const tipo = passwordInput.getAttribute("type") === "password" ? "text" : "password";
-        passwordInput.setAttribute("type", tipo);
-        togglePassword.textContent = tipo === "password" ? "👁️" : "🙈";
-    });
-
+   
     form.addEventListener("submit", (e) => {
         const password = passwordInput.value;
 

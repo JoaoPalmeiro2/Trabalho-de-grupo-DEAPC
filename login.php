@@ -54,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8" />
     <title>Login</title>
     <link rel="stylesheet" href="styles/style.css" />
-    <script src="password.js" defer></script>
+    <script src="scripts/password.js" defer></script>
 </head>
 <body>
 <header>
@@ -91,7 +91,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       <button
         type="button"
         id="togglePassword"
-        style="position: absolute; right: 5px; top: 50%; transform: translateY(-50%);"
+        style="position: absolute; right: 7px; top: 50%; transform: translateY(-50%);"
         aria-label="Mostrar/Ocultar senha"
       >
         👁️
