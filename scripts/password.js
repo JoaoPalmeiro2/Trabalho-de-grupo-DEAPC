@@ -1,36 +1,20 @@
-document.getElementById('loginForm').addEventListener('submit', function (e) {
-  e.preventDefault();
+document.addEventListener("DOMContentLoaded", () => {
+    const passwordInput = document.getElementById("password");
+    const togglePassword = document.getElementById("togglePassword");
+    const form = document.getElementById("loginForm");
 
-  const username = document.getElementById('username').value.trim();
-  const password = document.getElementById('password').value;
-  const erroEl = document.getElementById('erro');
+    togglePassword.addEventListener("click", () => {
+        const tipo = passwordInput.getAttribute("type") === "password" ? "text" : "password";
+        passwordInput.setAttribute("type", tipo);
+        togglePassword.textContent = tipo === "password" ? "👁️" : "🙈";
+    });
 
-  // Verifica se a senha contém pelo menos uma letra e um número
-  const temLetra = /[a-zA-Z]/.test(password);
-  const temNumero = /[0-9]/.test(password);
+    form.addEventListener("submit", (e) => {
+        const password = passwordInput.value;
 
-  if (temLetra && temNumero) {
-    // Cria formulário para enviar ao PHP
-    const form = document.createElement('form');
-    form.method = 'POST';
-    form.action = 'login.php';
-
-    const inputUser = document.createElement('input');
-    inputUser.type = 'hidden';
-    inputUser.name = 'username';
-    inputUser.value = username;
-
-    const inputPass = document.createElement('input');
-    inputPass.type = 'hidden';
-    inputPass.name = 'password';
-    inputPass.value = password;
-
-    form.appendChild(inputUser);
-    form.appendChild(inputPass);
-
-    document.body.appendChild(form);
-    form.submit();
-  } else {
-    erroEl.textContent = 'Palavra passe incorreta.';
-  }
+        if (password.length < 4) {
+            alert("A palavra-passe deve ter pelo menos 4 caracteres.");
+            e.preventDefault();  // Corrigido: removido o "/" sobrando
+        }
+    });
 });
