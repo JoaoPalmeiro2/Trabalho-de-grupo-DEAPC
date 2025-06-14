@@ -88,14 +88,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         required
         style="padding-right: 40px;"
       />
-      <button
-        type="button"
-        id="togglePassword"
-        style="position: absolute; right: 7px; top: 50%; transform: translateY(-50%);"
-        aria-label="Mostrar/Ocultar senha"
-      >
-        👁️
-      </button>
+      
     </div>
     <button type="submit" style="margin-top: 10px;">Entrar</button>
   </form>

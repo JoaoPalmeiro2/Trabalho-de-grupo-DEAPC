@@ -16,39 +16,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $car_model = $_POST['car_model'];             
     $process_type = $_POST['process_type'];       
 
-    // Verificar se a data do test drive tem pelo menos 7 dias de antecedência
-    $dataHoje = new DateTime(); // data atual
-    $dataTestDrive = DateTime::createFromFormat('Y-m-d', $test_drive_date);
+    
 
-    if (!$dataTestDrive) {
-        $erro = "Data inválida.";
+    $sql = "INSERT INTO processo (tipo, data_test_drive) VALUES (?, ?)";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("ss", $process_type, $test_drive_date);
+
+    if ($stmt->execute()) {
+        $last_id = $stmt->insert_id;
+        $resultado = "✅ Test Drive para o modelo <strong>" . htmlspecialchars($car_model) . "</strong> agendado com sucesso para <strong>" . htmlspecialchars($test_drive_date) . "</strong>.<br>ID do Processo: <strong>$last_id</strong>";
     } else {
-        $diferenca = $dataHoje->diff($dataTestDrive)->days;
-        $ehFuturo = $dataTestDrive > $dataHoje;
-
-        if ($diferenca < 7 || !$ehFuturo) {
-            $erro = "❌ Não é possível marcar um test drive com menos de 7 dias de antecedência.";
-        } else {
-            $sql = "INSERT INTO processo (tipo, data_test_drive) VALUES (?, ?)";
-            $stmt = $conn->prepare($sql);
-            $stmt->bind_param("ss", $process_type, $test_drive_date);
-
-            if ($stmt->execute()) {
-                $last_id = $stmt->insert_id;
-                $resultado = "✅ Test Drive para o modelo <strong>" . htmlspecialchars($car_model) . "</strong> agendado com sucesso para <strong>" . htmlspecialchars($test_drive_date) . "</strong>.<br>ID do Processo: <strong>$last_id</strong>";
-            } else {
-                $erro = "Erro ao agendar Test Drive: " . $stmt->error;
-            }
-
-            $stmt->close();
-        }
+        $erro = "Erro ao agendar Test Drive: " . $stmt->error;
     }
-} else {
-    $erro = "Método de requisição inválido. Por favor, utilize o formulário no catálogo.";
+
+    $stmt->close();
 }
 
 $conn->close();
 ?>
+
 
 <!DOCTYPE html>
 <html lang="pt">
@@ -89,7 +75,7 @@ $conn->close();
   </head>
   <body>
     <header>
-      <a href="index.html">
+      <a href="catalogo.html">
         <img src="imagens/logo.png" alt="Logo SIT" class="logo" />
       </a>
       <h1>Marcação Test Drive</h1>
@@ -99,13 +85,13 @@ $conn->close();
       <div class="mensagem">
         <?= $resultado ?>
         <br>
-        <a href="index.html">Voltar ao catálogo</a>
+        <a href="catalogo.html">Voltar ao catálogo</a>
       </div>
     <?php elseif ($erro): ?>
       <div class="mensagem erro">
         <?= $erro ?>
         <br>
-        <a href="index.html">Voltar ao catálogo</a>
+        <a href="catalogo.html">Voltar ao catálogo</a>
       </div>
     <?php endif; ?>
   </body>
