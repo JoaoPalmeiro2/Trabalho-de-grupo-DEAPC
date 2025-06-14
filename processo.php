@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 
 $servername = "localhost"; 
@@ -12,24 +11,38 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 $resultado = "";
 $erro = "";
 
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $test_drive_date = $_POST['test_drive_date']; 
     $car_model = $_POST['car_model'];             
     $process_type = $_POST['process_type'];       
 
-    $sql = "INSERT INTO processo (tipo, data_test_drive) VALUES (?, ?)";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ss", $process_type, $test_drive_date);
+    // Verificar se a data do test drive tem pelo menos 7 dias de antecedência
+    $dataHoje = new DateTime(); // data atual
+    $dataTestDrive = DateTime::createFromFormat('Y-m-d', $test_drive_date);
 
-    if ($stmt->execute()) {
-        $last_id = $stmt->insert_id;
-        $resultado = "✅ Test Drive para o modelo <strong>" . htmlspecialchars($car_model) . "</strong> agendado com sucesso para <strong>" . htmlspecialchars($test_drive_date) . "</strong>.<br>ID do Processo: <strong>$last_id</strong>";
+    if (!$dataTestDrive) {
+        $erro = "Data inválida.";
     } else {
-        $erro = "Erro ao agendar Test Drive: " . $stmt->error;
-    }
+        $diferenca = $dataHoje->diff($dataTestDrive)->days;
+        $ehFuturo = $dataTestDrive > $dataHoje;
 
-    $stmt->close();
+        if ($diferenca < 7 || !$ehFuturo) {
+            $erro = "❌ Não é possível marcar um test drive com menos de 7 dias de antecedência.";
+        } else {
+            $sql = "INSERT INTO processo (tipo, data_test_drive) VALUES (?, ?)";
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param("ss", $process_type, $test_drive_date);
+
+            if ($stmt->execute()) {
+                $last_id = $stmt->insert_id;
+                $resultado = "✅ Test Drive para o modelo <strong>" . htmlspecialchars($car_model) . "</strong> agendado com sucesso para <strong>" . htmlspecialchars($test_drive_date) . "</strong>.<br>ID do Processo: <strong>$last_id</strong>";
+            } else {
+                $erro = "Erro ao agendar Test Drive: " . $stmt->error;
+            }
+
+            $stmt->close();
+        }
+    }
 } else {
     $erro = "Método de requisição inválido. Por favor, utilize o formulário no catálogo.";
 }
@@ -86,11 +99,13 @@ $conn->close();
       <div class="mensagem">
         <?= $resultado ?>
         <br>
+        <a href="index.html">Voltar ao catálogo</a>
       </div>
     <?php elseif ($erro): ?>
       <div class="mensagem erro">
         <?= $erro ?>
         <br>
+        <a href="index.html">Voltar ao catálogo</a>
       </div>
     <?php endif; ?>
   </body>
