@@ -21,8 +21,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $dados = $result->fetch_assoc();
         $mensagem = "
             <h3>Detalhes do Test Drive #$id</h3>
-            <p><strong>Tipo de Processo:</strong> {$dados['tipo']}</p>
-            <p><strong>Data Marcada:</strong> {$dados['data_test_drive']}</p>
+            <p><strong>Tipo de Processo:</strong> {$dados["tipo"]}</p>
+            <p><strong>Data Marcada:</strong> {$dados["data_test_drive"]}</p>
         ";
     } else {
         $mensagem = "<p style='color:red;'>ID não encontrado.</p>";

@@ -1,9 +1,8 @@
 <?php
 session_start();
 
-
 $servername = "localhost";
-$username_db = "root"; 
+$username_db = "root";
 $password_db = "";
 $dbname = "deapc";
 
@@ -14,9 +13,9 @@ if ($conn->connect_error) {
 }
 
 // Atualizar stock se o formulário for enviado
-if (isset($_POST['id']) && isset($_POST['novo_stock'])) {
-    $id = intval($_POST['id']);
-    $novo_stock = intval($_POST['novo_stock']);
+if (isset($_POST["id"]) && isset($_POST["novo_stock"])) {
+    $id = intval($_POST["id"]);
+    $novo_stock = intval($_POST["novo_stock"]);
 
     $stmt = $conn->prepare("UPDATE inventario SET stock = ? WHERE id = ?");
     $stmt->bind_param("ii", $novo_stock, $id);
@@ -39,12 +38,14 @@ $result = $conn->query("SELECT * FROM inventario");
     </tr>
     <?php while ($row = $result->fetch_assoc()): ?>
     <tr>
-        <td><?= htmlspecialchars($row['nome_item']) ?></td>
-        <td><?= $row['stock'] ?></td>
+        <td><?= htmlspecialchars($row["nome_item"]) ?></td>
+        <td><?= $row["stock"] ?></td>
         <td>
             <form method="post" style="margin:0;">
-                <input type="hidden" name="id" value="<?= $row['id'] ?>">
-                <input type="number" name="novo_stock" min="0" value="<?= $row['stock'] ?>" required>
+                <input type="hidden" name="id" value="<?= $row["id"] ?>">
+                <input type="number" name="novo_stock" min="0" value="<?= $row[
+                    "stock"
+                ] ?>" required>
                 <input type="submit" value="Atualizar">
             </form>
         </td>
@@ -52,6 +53,5 @@ $result = $conn->query("SELECT * FROM inventario");
     <?php endwhile; ?>
 </table>
 
-<?php
-$conn->close();
+<?php $conn->close();
 ?>

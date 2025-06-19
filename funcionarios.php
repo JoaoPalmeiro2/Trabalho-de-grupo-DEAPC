@@ -12,21 +12,23 @@ if ($conn->connect_error) {
     die("Ligação falhou: " . $conn->connect_error);
 }
 
-if (!isset($_SESSION['username'])) {
+if (!isset($_SESSION["username"])) {
     echo "Utilizador não autenticado.";
-    exit;
+    exit();
 }
 
-$username = $_SESSION['username'];
-$data_acesso = date('Y-m-d H:i:s');
-$stmt = $conn->prepare("INSERT INTO acessos (username, data_acesso) VALUES (?, ?)");
+$username = $_SESSION["username"];
+$data_acesso = date("Y-m-d H:i:s");
+$stmt = $conn->prepare(
+    "INSERT INTO acessos (username, data_acesso) VALUES (?, ?)"
+);
 $stmt->bind_param("ss", $username, $data_acesso);
 $stmt->execute();
 $stmt->close();
 
-if (isset($_POST['id']) && isset($_POST['novo_stock'])) {
-    $id = intval($_POST['id']);
-    $novo_stock = intval($_POST['novo_stock']);
+if (isset($_POST["id"]) && isset($_POST["novo_stock"])) {
+    $id = intval($_POST["id"]);
+    $novo_stock = intval($_POST["novo_stock"]);
 
     $stmt = $conn->prepare("UPDATE inventario SET stock = ? WHERE id = ?");
     $stmt->bind_param("ii", $novo_stock, $id);
@@ -38,7 +40,8 @@ if (isset($_POST['id']) && isset($_POST['novo_stock'])) {
 
 $result = $conn->query("SELECT * FROM inventario");
 
-$sql_test_drives = "SELECT id, tipo, data_test_drive FROM processo ORDER BY data_test_drive DESC";
+$sql_test_drives =
+    "SELECT id, tipo, data_test_drive FROM processo ORDER BY data_test_drive DESC";
 $result_test_drives = $conn->query($sql_test_drives);
 ?>
 
@@ -175,7 +178,7 @@ $result_test_drives = $conn->query($sql_test_drives);
     </a>
   </header>
 
-  <?php if (!empty($msg_atualizacao)) : ?>
+  <?php if (!empty($msg_atualizacao)): ?>
     <p class="mensagem"><?= htmlspecialchars($msg_atualizacao) ?></p>
   <?php endif; ?>
 
@@ -191,12 +194,14 @@ $result_test_drives = $conn->query($sql_test_drives);
         </tr>
         <?php while ($row = $result->fetch_assoc()): ?>
           <tr>
-            <td><?= htmlspecialchars($row['nome_item']) ?></td>
-            <td><?= $row['stock'] ?></td>
+            <td><?= htmlspecialchars($row["nome_item"]) ?></td>
+            <td><?= $row["stock"] ?></td>
             <td>
               <form method="post" style="margin:0;">
-                <input type="hidden" name="id" value="<?= $row['id'] ?>">
-                <input type="number" name="novo_stock" min="0" value="<?= $row['stock'] ?>" required>
+                <input type="hidden" name="id" value="<?= $row["id"] ?>">
+                <input type="number" name="novo_stock" min="0" value="<?= $row[
+                    "stock"
+                ] ?>" required>
                 <input type="submit" value="Atualizar">
               </form>
             </td>
@@ -218,9 +223,9 @@ $result_test_drives = $conn->query($sql_test_drives);
             </tr>
             <?php while ($test_drive = $result_test_drives->fetch_assoc()): ?>
               <tr>
-                <td><?= htmlspecialchars($test_drive['id']) ?></td>
-                <td><?= htmlspecialchars($test_drive['tipo']) ?></td>
-                <td><?= htmlspecialchars($test_drive['data_test_drive']) ?></td>
+                <td><?= htmlspecialchars($test_drive["id"]) ?></td>
+                <td><?= htmlspecialchars($test_drive["tipo"]) ?></td>
+                <td><?= htmlspecialchars($test_drive["data_test_drive"]) ?></td>
               </tr>
             <?php endwhile; ?>
           </table>

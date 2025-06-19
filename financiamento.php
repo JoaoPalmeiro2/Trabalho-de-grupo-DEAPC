@@ -18,16 +18,18 @@
     </header>
 
     <?php
-   
     $valorCarro = $entrada = $meses = null;
     $erro = "";
     $resultado = "";
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-       
-        $valorCarro = filter_input(INPUT_POST, 'valorCarro', FILTER_VALIDATE_FLOAT);
-        $entrada = filter_input(INPUT_POST, 'entrada', FILTER_VALIDATE_FLOAT);
-        $meses = filter_input(INPUT_POST, 'meses', FILTER_VALIDATE_INT);
+        $valorCarro = filter_input(
+            INPUT_POST,
+            "valorCarro",
+            FILTER_VALIDATE_FLOAT
+        );
+        $entrada = filter_input(INPUT_POST, "entrada", FILTER_VALIDATE_FLOAT);
+        $meses = filter_input(INPUT_POST, "meses", FILTER_VALIDATE_INT);
 
         if ($valorCarro === false || $valorCarro <= 0) {
             $erro = "Por favor, insira um valor válido para o valor do carro.";
@@ -36,23 +38,31 @@
         } elseif ($entrada > $valorCarro) {
             $erro = "A entrada não pode ser maior que o valor do carro.";
         } elseif ($meses === false || $meses <= 0) {
-            $erro = "Por favor, insira um número válido de meses (maior que zero).";
+            $erro =
+                "Por favor, insira um número válido de meses (maior que zero).";
         }
 
         if (empty($erro)) {
-           
             $valorFinanciado = $valorCarro - $entrada;
-            $taxaAnual = 0.05;  
+            $taxaAnual = 0.05;
             $taxaMensal = $taxaAnual / 12;
 
-            
-            $prestacao = ($taxaMensal * $valorFinanciado) / (1 - pow(1 + $taxaMensal, -$meses));
+            $prestacao =
+                ($taxaMensal * $valorFinanciado) /
+                (1 - pow(1 + $taxaMensal, -$meses));
 
-            $resultado = "
+            $resultado =
+                "
                 <div class='resultado'>
-                    <p><strong>Valor financiado:</strong> €" . number_format($valorFinanciado, 2, ',', '.') . "</p>
-                    <p><strong>Prestação mensal:</strong> €" . number_format($prestacao, 2, ',', '.') . "</p>
-                    <p><strong>Total pago após {$meses} meses:</strong> €" . number_format($prestacao * $meses, 2, ',', '.') . "</p>
+                    <p><strong>Valor financiado:</strong> €" .
+                number_format($valorFinanciado, 2, ",", ".") .
+                "</p>
+                    <p><strong>Prestação mensal:</strong> €" .
+                number_format($prestacao, 2, ",", ".") .
+                "</p>
+                    <p><strong>Total pago após {$meses} meses:</strong> €" .
+                number_format($prestacao * $meses, 2, ",", ".") .
+                "</p>
                 </div>
             ";
         }
@@ -67,13 +77,19 @@
 
         <form method="post" action="">
             <label for="valorCarro">Valor do Carro (€):</label>
-            <input type="number" step="0.01" name="valorCarro" id="valorCarro" required value="<?= htmlspecialchars($valorCarro ?? '') ?>" />
+            <input type="number" step="0.01" name="valorCarro" id="valorCarro" required value="<?= htmlspecialchars(
+                $valorCarro ?? ""
+            ) ?>" />
 
             <label for="entrada">Entrada (€):</label>
-            <input type="number" step="0.01" name="entrada" id="entrada" required value="<?= htmlspecialchars($entrada ?? '') ?>" />
+            <input type="number" step="0.01" name="entrada" id="entrada" required value="<?= htmlspecialchars(
+                $entrada ?? ""
+            ) ?>" />
 
             <label for="meses">Número de Meses:</label>
-            <input type="number" name="meses" id="meses" required value="<?= htmlspecialchars($meses ?? '') ?>" />
+            <input type="number" name="meses" id="meses" required value="<?= htmlspecialchars(
+                $meses ?? ""
+            ) ?>" />
 
             <button type="submit">Calcular</button>
         </form>

@@ -1,10 +1,10 @@
 <?php
 session_start();
 
-$servername = "localhost"; 
-$username = "root";       
-$password = "";           
-$dbname = "deapc";        
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "deapc";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -12,11 +12,9 @@ $resultado = "";
 $erro = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $test_drive_date = $_POST['test_drive_date']; 
-    $car_model = $_POST['car_model'];             
-    $process_type = $_POST['process_type'];       
-
-    
+    $test_drive_date = $_POST["test_drive_date"];
+    $car_model = $_POST["car_model"];
+    $process_type = $_POST["process_type"];
 
     $sql = "INSERT INTO processo (tipo, data_test_drive) VALUES (?, ?)";
     $stmt = $conn->prepare($sql);
@@ -24,7 +22,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($stmt->execute()) {
         $last_id = $stmt->insert_id;
-        $resultado = "✅ Test Drive para o modelo <strong>" . htmlspecialchars($car_model) . "</strong> agendado com sucesso para <strong>" . htmlspecialchars($test_drive_date) . "</strong>.<br>ID do Processo: <strong>$last_id</strong>";
+        $resultado =
+            "✅ Test Drive para o modelo <strong>" .
+            htmlspecialchars($car_model) .
+            "</strong> agendado com sucesso para <strong>" .
+            htmlspecialchars($test_drive_date) .
+            "</strong>.<br>ID do Processo: <strong>$last_id</strong>";
     } else {
         $erro = "Erro ao agendar Test Drive: " . $stmt->error;
     }

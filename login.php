@@ -1,27 +1,25 @@
 <?php
 session_start();
 
-ini_set('display_errors', 1);
+ini_set("display_errors", 1);
 error_reporting(E_ALL);
 
-$erro = '';
+$erro = "";
 
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $host = "localhost";
+    $db = "deapc";
+    $user = "root";
+    $pass = "";
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $host = 'localhost';
-    $db = 'deapc';      
-    $user = 'root';    
-    $pass = '';         
-
-    
     $conn = new mysqli($host, $user, $pass, $db);
 
     if ($conn->connect_error) {
         die("Erro na ligação: " . $conn->connect_error);
     }
 
-    $username = trim($_POST['username'] ?? '');
-    $password = trim($_POST['password'] ?? '');
+    $username = trim($_POST["username"] ?? "");
+    $password = trim($_POST["password"] ?? "");
 
     $stmt = $conn->prepare("SELECT * FROM contas WHERE username = ?");
     $stmt->bind_param("s", $username);
@@ -31,9 +29,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($result && $result->num_rows === 1) {
         $user = $result->fetch_assoc();
 
-        
-        if ($password === $user['password']) {
-            $_SESSION['username'] = $username;
+        if ($password === $user["password"]) {
+            $_SESSION["username"] = $username;
             header("Location: funcionarios.php");
             exit();
         } else {

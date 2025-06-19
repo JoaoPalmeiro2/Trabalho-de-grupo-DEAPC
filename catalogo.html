@@ -1,208 +1,193 @@
 <!DOCTYPE html>
 <html lang="pt">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Catálogo de Carros - SIT</title>
-    <link rel="stylesheet" href="styles/style.css" />
+   <head>
+      <meta charset="UTF-8" />
+      <title>Catálogo de Carros - SIT</title>
+      <link rel="stylesheet" href="styles/style.css" />
       <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
       <link href="https://fonts.googleapis.com/css2?family=Rethink+Sans:wght@400..800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles/style.css" />
-    <style>
-      .modal {
-        display: none;
-        position: fixed;
-        z-index: 1;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        overflow: auto;
-        background-color: rgba(0, 0, 0, 0.4);
-        padding-top: 60px;
-      }
-
-      .modal-content {
-        background-color: #fefefe;
-        margin: 5% auto;
-        padding: 20px;
-        border: 1px solid #888;
-        width: 80%;
-        max-width: 500px;
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
-          0 6px 20px 0 rgba(0, 0, 0, 0.19);
-        animation-name: animatetop;
-        animation-duration: 0.4s;
-      }
-
-      @keyframes animatetop {
-        from {
-          top: -300px;
-          opacity: 0;
-        }
-        to {
-          top: 5%;
-          opacity: 1;
-        }
-      }
-
-      .close-button {
-        color: #aaa;
-        float: right;
-        font-size: 28px;
-        font-weight: bold;
-      }
-
-      .close-button:hover,
-      .close-button:focus {
-        color: black;
-        text-decoration: none;
-        cursor: pointer;
-      }
-
-      .modal-content form {
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-        align-items: center;
-      }
-
-      .modal-content label {
-        font-weight: bold;
-        margin-top: 10px;
-      }
-
-      .modal-content input[type="date"],
-      .modal-content button[type="submit"] {
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        width: 80%;
-        max-width: 300px;
-      }
-
-      .modal-content button[type="submit"] {
-        background-color: #4caf50;
-        color: white;
-        cursor: pointer;
-        font-size: 16px;
-        transition: background-color 0.3s ease;
-      }
-
-      .modal-content button[type="submit"]:hover {
-        background-color: #45a049;
-      }
-    </style>
-  </head>
-  <body>
-    <header class="header">
-      <a href="index.php">
-        <img src="imagens/logo.png" alt="Logo SIT" class="logo" />
-      </a>
-      <h1>Catálogo de Carros SIT</h1>
-    </header>
-
-    <main>
-      <div class="catalogo-container">
-      <section id="pizza" class="modelo-section">
-        <h2>SIT Pizza</h2>
-        <div class="carros-grid">
-        <div class="carro-item">
-          <img src="imagens/SITPizza.jpg" alt="SIT Pizza - Exemplo 1" />
-          <div class="carro-info">
-            <p>
-              <strong>Descrição:</strong> SIT Pizza - Pequeno, rápido, e sempre
-              a dar fome.
-            </p>
-            <p><strong>Preço:</strong> 19.496,00 €</p>
-            <button onclick="openTestDriveModal('SIT Pizza')">
-              Marcar Test Drive
-            </button>
-          </div>
-        </div>
-        </div>
-      </section>
-
-      <section id="leao" class="modelo-section">
-        <h2>SIT Leão</h2>
-        <div class="carros-grid">
-        <div class="carro-item">
-          <img src="imagens/SITLeão.png" alt="SIT Leão - Exemplo 1" />
-          <div class="carro-info">
-            <p>
-              <strong>Descrição:</strong> SIT Leão - Parece feroz, mas mia ao
-              subir uma ladeira.
-            </p>
-            <p><strong>Preço:</strong> 32.085,00 €</p>
-            <button onclick="openTestDriveModal('SIT Leão')">
-              Marcar Test Drive
-            </button>
-          </div>
-        </div>
-        </div>
-      </section>
-
-      <section id="aronha" class="modelo-section">
-        <h2>SIT Aronha</h2>
-        <div class="carros-grid">
-        <div class="carro-item">
-          <img src="imagens/SITAronha.jpg" alt="SIT Aronha - Exemplo 1" />
-          <div class="carro-info">
-            <p>
-              <strong>Descrição:</strong> SIT Aronha - Ideal para quem gosta
-              subidas, mesmo que lentas.
-            </p>
-            <p><strong>Preço:</strong> 22.024,00 €</p>
-            <button onclick="openTestDriveModal('SIT Aronha')">
-              Marcar Test Drive
-            </button>
-          </div>
-        </div>
-        </div>
-      </section>
-
-      <section id="aseca" class="modelo-section">
-        <h2>SIT Aseca</h2>
-        <div class="carros-grid">
-        <div class="carro-item">
-          <img src="imagens/SITAseca.png" alt="SIT Aseca - Exemplo 1" />
-          <div class="carro-info">
-            <p>
-              <strong>Descrição:</strong> SIT Aseca - SUV com zero emoção, seco
-              como o nome.
-            </p>
-            <p><strong>Preço:</strong> 34.175,00 €</p>
-            <button onclick="openTestDriveModal('SIT Aseca')">
-              Marcar Test Drive
-            </button>
-          </div>
-        </div>
-        </div>
-      </section>
+      <link rel="stylesheet" href="styles/style.css" />
+      <style>
+         .modal {
+         display: none;
+         position: fixed;
+         z-index: 1;
+         left: 0;
+         top: 0;
+         width: 100%;
+         height: 100%;
+         overflow: auto;
+         background-color: rgba(0, 0, 0, 0.4);
+         padding-top: 60px;
+         }
+         .modal-content {
+         background-color: #fefefe;
+         margin: 5% auto;
+         padding: 20px;
+         border: 1px solid #888;
+         width: 80%;
+         max-width: 500px;
+         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+         0 6px 20px 0 rgba(0, 0, 0, 0.19);
+         animation-name: animatetop;
+         animation-duration: 0.4s;
+         }
+         @keyframes animatetop {
+         from {
+         top: -300px;
+         opacity: 0;
+         }
+         to {
+         top: 5%;
+         opacity: 1;
+         }
+         }
+         .close-button {
+         color: #aaa;
+         float: right;
+         font-size: 28px;
+         font-weight: bold;
+         }
+         .close-button:hover,
+         .close-button:focus {
+         color: black;
+         text-decoration: none;
+         cursor: pointer;
+         }
+         .modal-content form {
+         display: flex;
+         flex-direction: column;
+         gap: 15px;
+         align-items: center;
+         }
+         .modal-content label {
+         font-weight: bold;
+         margin-top: 10px;
+         }
+         .modal-content input[type="date"],
+         .modal-content button[type="submit"] {
+         padding: 10px;
+         border: 1px solid #ccc;
+         border-radius: 5px;
+         width: 80%;
+         max-width: 300px;
+         }
+         .modal-content button[type="submit"] {
+         background-color: #4caf50;
+         color: white;
+         cursor: pointer;
+         font-size: 16px;
+         transition: background-color 0.3s ease;
+         }
+         .modal-content button[type="submit"]:hover {
+         background-color: #45a049;
+         }
+      </style>
+   </head>
+   <body>
+      <header class="header">
+         <a href="index.php">
+         <img src="imagens/logo.png" alt="Logo SIT" class="logo" />
+         </a>
+         <h1>Catálogo de Carros SIT</h1>
+      </header>
+      <main>
+         <div class="catalogo-container">
+            <section id="pizza" class="modelo-section">
+               <h2>SIT Pizza</h2>
+               <div class="carros-grid">
+                  <div class="carro-item">
+                     <img src="imagens/SITPizza.jpg" alt="SIT Pizza - Exemplo 1" />
+                     <div class="carro-info">
+                        <p>
+                           <strong>Descrição:</strong> SIT Pizza - Pequeno, rápido, e sempre
+                           a dar fome.
+                        </p>
+                        <p><strong>Preço:</strong> 19.496,00 €</p>
+                        <button onclick="openTestDriveModal('SIT Pizza')">
+                        Marcar Test Drive
+                        </button>
+                     </div>
+                  </div>
+               </div>
+            </section>
+            <section id="leao" class="modelo-section">
+               <h2>SIT Leão</h2>
+               <div class="carros-grid">
+                  <div class="carro-item">
+                     <img src="imagens/SITLeão.png" alt="SIT Leão - Exemplo 1" />
+                     <div class="carro-info">
+                        <p>
+                           <strong>Descrição:</strong> SIT Leão - Parece feroz, mas mia ao
+                           subir uma ladeira.
+                        </p>
+                        <p><strong>Preço:</strong> 32.085,00 €</p>
+                        <button onclick="openTestDriveModal('SIT Leão')">
+                        Marcar Test Drive
+                        </button>
+                     </div>
+                  </div>
+               </div>
+            </section>
+            <section id="aronha" class="modelo-section">
+               <h2>SIT Aronha</h2>
+               <div class="carros-grid">
+                  <div class="carro-item">
+                     <img src="imagens/SITAronha.jpg" alt="SIT Aronha - Exemplo 1" />
+                     <div class="carro-info">
+                        <p>
+                           <strong>Descrição:</strong> SIT Aronha - Ideal para quem gosta
+                           subidas, mesmo que lentas.
+                        </p>
+                        <p><strong>Preço:</strong> 22.024,00 €</p>
+                        <button onclick="openTestDriveModal('SIT Aronha')">
+                        Marcar Test Drive
+                        </button>
+                     </div>
+                  </div>
+               </div>
+            </section>
+            <section id="aseca" class="modelo-section">
+               <h2>SIT Aseca</h2>
+               <div class="carros-grid">
+                  <div class="carro-item">
+                     <img src="imagens/SITAseca.png" alt="SIT Aseca - Exemplo 1" />
+                     <div class="carro-info">
+                        <p>
+                           <strong>Descrição:</strong> SIT Aseca - SUV com zero emoção, seco
+                           como o nome.
+                        </p>
+                        <p><strong>Preço:</strong> 34.175,00 €</p>
+                        <button onclick="openTestDriveModal('SIT Aseca')">
+                        Marcar Test Drive
+                        </button>
+                     </div>
+                  </div>
+               </div>
+            </section>
+         </div>
+      </main>
+      <div id="testDriveModal" class="modal">
+         <div class="modal-content">
+            <span class="close-button" onclick="closeTestDriveModal()"
+               >&times;</span
+               >
+            <h2>Agendar Test Drive para <span id="carModelName"></span></h2>
+            <form action="processo.php" method="POST">
+               <label for="test_drive_date">Selecione a Data:</label>
+               <input
+                  type="date"
+                  id="test_drive_date"
+                  name="test_drive_date"
+                  required
+                  /><br />
+               <input type="hidden" id="car_model_input" name="car_model" value="" />
+               <input type="hidden" name="process_type" value="Test Drive" />
+               <button type="submit">Confirmar Agendamento</button>
+            </form>
+         </div>
       </div>
-    </main>
-
-    <div id="testDriveModal" class="modal">
-      <div class="modal-content">
-        <span class="close-button" onclick="closeTestDriveModal()"
-          >&times;</span
-        >
-        <h2>Agendar Test Drive para <span id="carModelName"></span></h2>
-        <form action="processo.php" method="POST">
-          <label for="test_drive_date">Selecione a Data:</label>
-          <input
-            type="date"
-            id="test_drive_date"
-            name="test_drive_date"
-            required
-          /><br />
-          <input type="hidden" id="car_model_input" name="car_model" value="" />
-          <input type="hidden" name="process_type" value="Test Drive" />
-          <button type="submit">Confirmar Agendamento</button>
-        </form>
-      </div>
-    </div>
-
-    <script src="scripts/testdrive.js"></script>
-  </body>
+      <script src="scripts/testdrive.js"></script>
+   </body>
 </html>
