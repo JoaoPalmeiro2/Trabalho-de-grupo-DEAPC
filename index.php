@@ -37,39 +37,38 @@
       <img src="imagens/seatindex1.jpg" alt="Carro lindo" class="imgindex" />
       <main>
          <div style="
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  padding-left: 20px;
-  position: relative;
-  z-index: 100;
-">
-  <h1 style="
-    font-size: 3rem;
-    color: white;
-    text-shadow: -2px -2px 0 #000,
-                 2px -2px 0 #000,
-                -2px 2px 0 #000,
-                 2px 2px 0 #000;
-    margin: 0;
-  ">
-    Encontra o teu SIT ideal.
-  </h1>
-  <h1 style="
-    font-size: 1.8rem;
-    color: white;
-    text-shadow: -1px -1px 0 #000,
-                 1px -1px 0 #000,
-                -1px 1px 0 #000,
-                 1px 1px 0 #000;
-    margin-top: 10px;
-  ">
-    Modelos modernos, seguros e prontos para ti. Explora, compara e escolhe com confiança.
-  </h1>
-</div>
-
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            padding-left: 20px;
+            position: relative;
+            z-index: 100;
+            ">
+            <h1 style="
+               font-size: 3rem;
+               color: white;
+               text-shadow: -2px -2px 0 #000,
+               2px -2px 0 #000,
+               -2px 2px 0 #000,
+               2px 2px 0 #000;
+               margin: 0;
+               ">
+               Encontra o teu SIT ideal.
+            </h1>
+            <h1 style="
+               font-size: 1.8rem;
+               color: white;
+               text-shadow: -1px -1px 0 #000,
+               1px -1px 0 #000,
+               -1px 1px 0 #000,
+               1px 1px 0 #000;
+               margin-top: 10px;
+               ">
+               Modelos modernos, seguros e prontos para ti. Explora, compara e escolhe com confiança.
+            </h1>
+         </div>
       </main>
    </body>
 </html>

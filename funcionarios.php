@@ -48,6 +48,10 @@ $result_test_drives = $conn->query($sql_test_drives);
   <meta charset="UTF-8" />
   <title>Área Funcionários - Inventário</title>
   <link rel="stylesheet" href="styles/style.css" />
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Rethink+Sans:wght@400..800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/style.css" />
   <style>
     body {
       font-family: 'Rethink Sans', Arial, sans-serif;
