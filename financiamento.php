@@ -6,8 +6,8 @@
   <link rel="stylesheet" href="styles/style.css" />
 </head>
 <body>
-  <header>
-    <a href="index.html">
+  <header class="header">
+    <a href="index.php">
       <img src="imagens/logo.png" alt="Logo SIT" class="logo" />
     </a>
         <h1>Financiamento</h1>
@@ -56,7 +56,7 @@
     ?>
 
     <section class="simulador-section">
-        <h2>Simulador de Financiamento</h2>
+        
         <?php if ($erro): ?>
             <p class="erro"><?= htmlspecialchars($erro) ?></p>
         <?php endif; ?>

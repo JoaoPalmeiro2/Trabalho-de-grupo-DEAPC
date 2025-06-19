@@ -7,16 +7,45 @@
 
 /* Corpo da página */
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Rethink Sans', Arial, sans-serif;
   background-color: #f8f8f8;
   color: #000;
   line-height: 1.6;
-  padding: 20px;
+  padding: 0px;
+  margin: 0;
+  background-color: #f0f0f0; /* Substitua pela cor desejada */
+
 }
 
 /* Cabeçalho */
-header {
+.header {
   background-color: #F4A300;
+  color: white;
+  padding: 15px 20px; /* igual ao headerindex */
+  margin-bottom: 20px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  z-index: 10;
+}
+
+.header h1 {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.8rem;
+  margin: 0;
+  white-space: nowrap;
+}
+
+.logo {
+  width: 100px;
+  height: auto;
+}
+
+.headerindex {
+  background-color: #000000;
   color: white;
   padding: 15px 20px;
   margin-bottom: 20px;
@@ -24,13 +53,23 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.5); /* para fundo preto translúcido */
+
 }
 
-header h1 {
-  width: 100%;
-  text-align: center;
-  margin: 0;
+.headerfuncionarios {
+  background-color: #F4A300;
+  color: white;
+  padding: 15px 20px; /* igual ao headerindex */
+  margin-bottom: 20px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  z-index: 10;
 }
+
 
 /* Menu principal */
 .menu {
@@ -38,6 +77,9 @@ header h1 {
   display: flex;
   justify-content: center;
   text-align: center;
+  display: block;
+  position: relative;
+  
 }
 
 .menu ul {
@@ -61,35 +103,14 @@ header h1 {
   font-weight: bold;
   font-size: 22px;
   transition: background-color 0.3s ease;
+  border-radius: 30px;
 }
 
 .menu ul li a:hover {
-  background-color: #8B4513;
-  border-radius: 20px;
+  background-color: #000000;
+  border-radius: 30px;
 }
 
-/* Dropdown */
-.menu .dropdown-content {
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background-color: #cc6300;
-  min-width: 180px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-  border-radius: 10px;
-  z-index: 100;
-}
-
-.menu .dropdown-content li a {
-  color: white;
-  padding: 10px;
-  display: block;
-}
-
-.menu li.dropdown:hover .dropdown-content {
-  display: block;
-}
 
 /* Shortcuts catálogo */
 .modelo-shortcuts ul {
@@ -120,14 +141,15 @@ header h1 {
 }
 
 /* Carros */
+
 .carro-item {
   display: flex;
   align-items: center;
   gap: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 0px;
   background-color: white;
   border-radius: 8px;
-  padding: 10px;
+  padding: 4px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
@@ -143,7 +165,7 @@ header h1 {
 }
 
 .carro-info button {
-  background-color: #004d99;
+  background-color: #F4A300;
   border: none;
   color: white;
   padding: 10px 15px;
@@ -154,7 +176,7 @@ header h1 {
 }
 
 .carro-info button:hover {
-  background-color: #003366;
+  background-color: #F4A300;
 }
 
 .carro-info button::after {
@@ -210,7 +232,7 @@ label + textarea {
 
 /* Botões */
 button {
-  background-color: #004d99;
+  background-color: #F4A300;
   color: white;
   border: none;
   padding: 10px 18px;
@@ -222,7 +244,7 @@ button {
 }
 
 button:hover {
-  background-color: #003366;
+  background-color: #F4A300;
 }
 
 button:disabled {
@@ -232,14 +254,62 @@ button:disabled {
 
 /* Área de login */
 .login-container {
-  max-width: 320px;
-  margin: 80px auto;
-  padding: 30px;
-  background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 0 12px rgb(254, 251, 251);
+  max-width: 400px;
+  margin: 100px auto;
+  padding: 40px 30px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
   text-align: center;
 }
+
+.login-container h2 {
+  margin-bottom: 25px;
+  color: #333;
+  font-size: 1.6rem;
+}
+
+.login-container input[type="text"],
+.login-container input[type="password"] {
+  width: 100%;
+  padding: 12px 15px;
+  margin-bottom: 18px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.login-container input:focus {
+  border-color: #F4A300;
+  box-shadow: 0 0 5px rgba(244, 163, 0, 0.3);
+  outline: none;
+}
+
+.login-container button[type="submit"] {
+  width: 100%;
+  background-color: #F4A300;
+  color: white;
+  padding: 12px;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.login-container button[type="submit"]:hover {
+  background-color: #cc8400;
+}
+
+.login-container p {
+  margin-top: 10px;
+  font-size: 0.95rem;
+  color: red;
+  font-weight: 500;
+}
+
 
 .login-container input {
   margin-bottom: 15px;
@@ -262,14 +332,19 @@ button:disabled {
 .logo {
   margin-right: 20px;
   width: 100px;
+
 }
 
 .imgindex {
-  width: 800px;
-  height: auto;
-  border-radius: 10px;
-  margin: 20px auto 0;
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
 }
+
 
 /* Botão sair */
 .logout {
@@ -308,4 +383,180 @@ button:disabled {
 
 .apoio-section ul {
   padding-left: 18px;
+}
+
+
+.rethink-sans-regular {
+  font-family: "Rethink Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.rethink-sans-bold {
+  font-family: "Rethink Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.simulador-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 140px); /* reduzido */
+  padding: 20px 10px; /* menos padding */
+  background-color: #f0f2f5;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.simulador-section h2 {
+  font-size: 1.6rem;
+  margin-bottom: 20px; /* menos espaço */
+  color: #F4A300;
+}
+
+.simulador-section form {
+  background-color: white;
+  padding: 20px 25px; /* menos padding interno */
+  border-radius: 10px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+  width: 100%;
+  max-width: 460px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px; /* menos espaço entre campos */
+}
+
+.simulador-section input {
+  padding: 10px;
+  border-radius: 6px;
+  font-size: 0.95rem;
+}
+
+.simulador-section button {
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 6px;
+}
+
+.erro, .resultado {
+  max-width: 460px;
+  font-size: 0.95rem;
+  padding: 15px;
+  margin-top: 20px;
+}
+
+.consulta-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 140px);
+  padding: 30px 15px;
+  background-color: #f0f2f5;
+}
+
+.consulta-section form {
+  background-color: #ffffff;
+  padding: 20px 30px;
+  border-radius: 10px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.07);
+  max-width: 400px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.consulta-section label {
+  font-weight: bold;
+  color: #333;
+}
+
+.consulta-section input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.consulta-section input:focus {
+  border-color: #F4A300;
+  outline: none;
+}
+
+.consulta-section button {
+  background-color: #F4A300;
+  color: white;
+  padding: 10px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.consulta-section button:hover {
+  background-color: #cc8400;
+}
+
+.mensagem {
+  margin-top: 20px;
+  padding: 0;
+  border: none;
+  background: none;
+  font-size: 1rem;
+  color: #333;
+  max-width: 400px;
+}
+
+
+.mensagem p {
+  margin: 5px 0;
+}
+
+.mensagem h3 {
+  margin-bottom: 10px;
+  color: #000000;
+}
+
+.catalogo-container {
+  padding: 0 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.tabelas-container {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  padding: 20px;
+}
+
+.tabela-wrapper {
+  flex: 1;
+  min-width: 400px;
+  max-width: 45%;
+}
+
+.tabela-wrapper table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.scroll-processos {
+  max-height: 400px;
+  overflow-y: auto;
 }

@@ -57,8 +57,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <script src="scripts/password.js" defer></script>
 </head>
 <body>
-<header>
-  <a href="index.html">
+<header class="header">
+  <a href="index.php">
     <img src="imagens/logo.png" alt="Logo SIT" class="logo" />
   </a>
   <h1>Login SIT</h1>

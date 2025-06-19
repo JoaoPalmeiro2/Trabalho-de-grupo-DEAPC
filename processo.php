@@ -74,7 +74,7 @@ $conn->close();
     </style>
   </head>
   <body>
-    <header>
+    <header class="header">
       <a href="catalogo.html">
         <img src="imagens/logo.png" alt="Logo SIT" class="logo" />
       </a>

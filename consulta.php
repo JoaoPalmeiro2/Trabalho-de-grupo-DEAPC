@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     $sql = "SELECT tipo, data_test_drive FROM processo WHERE id = ?";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("i", $id); 
+    $stmt->bind_param("i", $id);
     $stmt->execute();
     $result = $stmt->get_result();
 
@@ -42,22 +42,25 @@ $conn->close();
   <link rel="stylesheet" href="styles/style.css" />
 </head>
 <body>
-  <header>
-    <a href="index.html">
+  <header class="header">
+    <a href="index.php">
       <img src="imagens/logo.png" alt="Logo SIT" class="logo" />
     </a>
     <h1>Consulta de Test Drive</h1>
   </header>
-  <main>
+
+  <main class="consulta-section">
     <form method="post">
       <label for="id">ID do Test Drive:</label>
       <input type="number" name="id" id="id" required />
       <button type="submit">Consultar</button>
     </form>
 
-    <div style="margin-top: 20px">
-      <?= $mensagem ?>
-    </div>
+    <?php if ($mensagem): ?>
+      <div class="mensagem">
+        <?= $mensagem ?>
+      </div>
+    <?php endif; ?>
   </main>
 </body>
 </html>
